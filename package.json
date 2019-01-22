@@ -12,7 +12,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+	"start": "node server.js"
   },
   "author": "Luke Westlake",
   "license": "ISC"
