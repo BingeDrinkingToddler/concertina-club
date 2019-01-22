@@ -246,7 +246,7 @@
 					}
 					function post(){
 						var text = $("#posttext").val();
-						if ((text != "") && (text.includes("<script>") == false)){
+						if ((text != "") && text.includes("<script>") == false){
 						$.post("/post",{"username":user,"text":text},
 							function(data){
 								loadposts();
