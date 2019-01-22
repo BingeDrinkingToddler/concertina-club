@@ -13,7 +13,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "jest",
-	"start": "npm run build && node server.js"
+	"postinstall":"npm run build",
+	"start": "node server.js"
   },
   "author": "Luke Westlake",
   "license": "ISC"
