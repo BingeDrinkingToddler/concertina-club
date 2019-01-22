@@ -1,3 +1,5 @@
 const app = require('./app.js');
-app.listen(process.env.PORT || 8090);
+const port = process.env.PORT || 8090;
+console.log(port);
+app.listen(port);
 
