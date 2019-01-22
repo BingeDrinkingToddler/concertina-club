@@ -1,4 +1,4 @@
 
 const app = require('./app');
-app.listen(process.env.PORT || 8090);
+app.listen(0.0.0.0);
 
