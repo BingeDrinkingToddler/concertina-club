@@ -246,7 +246,7 @@
 					}
 					function post(){
 						var text = $("#posttext").val();
-						if (text != ""){
+						if (text != "" && text.includes("<scritp>") == false){
 						$.post("/post",{"username":user,"text":text},
 							function(data){
 								loadposts();
@@ -298,12 +298,12 @@
 					function chat(){
 						open = 2;
 						var chats = []
-						$.post("/chats/",{username:user},
+						$.post("/chats",{username:user},
 							function(data){
 								chats = data;
 						});
 						$("#events").empty();
-						$.get('/people/',
+						$.get('/people',
 							function(data){
 								$("#events").append('\
 									<div class="panel panel-default textbackground">\
@@ -368,7 +368,7 @@
 											$("#send").click(send);
 											function send(){
 												var message = $("#message").val();
-												if (message != ""){
+												if (message != "" && message.includes("<script>") == false){
 													$.post('/send',{"from":user,"to":value.username,"message":message},
 														function(data){
 															$("#message").val("");
