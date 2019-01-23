@@ -246,7 +246,7 @@
 					}
 					function post(){
 						var text = $("#posttext").val();
-						if (text != "" && text.includes("<script>") == false){
+						if (text != ""){
 						$.post("/post",{"username":user,"text":text},
 							function(data){
 								loadposts();
@@ -368,7 +368,7 @@
 											$("#send").click(send);
 											function send(){
 												var message = $("#message").val();
-												if (message.includes("<script>") == false){
+												if (message != ""){
 													$.post('/send',{"from":user,"to":value.username,"message":message},
 														function(data){
 															$("#message").val("");

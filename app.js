@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static('/public'));
+app.use(express.static('./public'));
 
 var users = [{"username": "doctorwhocomposer", "forename": "Delia", "surname": "Derbyshire","access_token":"123", "active":false,"chats":[{"from":"doctorwhocomposer","to":"Bongos","message":"Hi"}]}, {"username": "Bongos", "forename": "Joe", "surname": "Blogs","access_token": "letmein" ,"active":false,"chats":[{"from":"doctorwhocomposer","to":"Bongos","message":"Hi"}]},{"username":"robot","forename":"Bender","surname":"Bender","access_token":"futurama","active":false,"chats":[]}];
 var posts = [{"username":"doctorwhocomposer", "text":"welcome to this website"},{"username":"robot","text":"Cool club"}];
