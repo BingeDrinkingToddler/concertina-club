@@ -16,5 +16,8 @@
 	"start": "node server.js"
   },
   "author": "Luke Westlake",
-  "license": "ISC"
+  "license": "ISC",
+  "engines":{
+	"node":"6.4.1"
+  }
 }
