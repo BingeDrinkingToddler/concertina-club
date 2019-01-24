@@ -12,9 +12,7 @@ var users = [{"username": "doctorwhocomposer", "forename": "Delia", "surname": "
 var posts = [{"username":"doctorwhocomposer", "text":"welcome to this website"},{"username":"robot","text":"Cool club"}];
 var events = [{"creator":"doctorwhocomposer","date":"2019-02-01","title":"Web deadline","description":"this is when this website is due"}]
 
-app.get('/',function(req,res){
-	res.sendfile(path.join(__public, 'Index.html'));
-});
+
 app.get('/people', function(req, resp){
 	resp.send(users);
 });
