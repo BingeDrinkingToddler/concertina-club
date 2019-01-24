@@ -13,10 +13,10 @@ var posts = [{"username":"doctorwhocomposer", "text":"welcome to this website"},
 var events = [{"creator":"doctorwhocomposer","date":"2019-02-01","title":"Web deadline","description":"this is when this website is due"}]
 
 
-app.get('./people', function(req, resp){
+app.get('/people', function(req, resp){
 	resp.send(users);
 });
-app.get('./people/:user', function(req,resp){
+app.get('/people/:user', function(req,resp){
 	var person = req.url;
 	person = person.split('/');
 	person = person[2];
@@ -32,7 +32,7 @@ app.get('./people/:user', function(req,resp){
 	}
 });
 	
-app.post('./login', function(req,resp){
+app.post('/login', function(req,resp){
 	const username = req.body.username;
 	const passw = req.body.passw;
 	var found = false;
@@ -48,7 +48,7 @@ app.post('./login', function(req,resp){
 	}
 });	
 
-app.post('./people', function(req, resp){
+app.post('/people', function(req, resp){
 	var username = req.get('username');
 	var forename = req.get('forename');
 	var surname = req.get('surname');
@@ -79,11 +79,11 @@ app.post('./people', function(req, resp){
 	}
 });
 
-app.get('./posts', function(req,resp){
+app.get('/posts', function(req,resp){
 	resp.send(posts);
 });
 
-app.post('./signout', function(req,resp){
+app.post('/signout', function(req,resp){
 	const user = req.body.username;
 	var found = false;
 	users.forEach(function(item){
@@ -98,14 +98,14 @@ app.post('./signout', function(req,resp){
 	}
 });
 
-app.post('./post', function(req,resp){
+app.post('/post', function(req,resp){
 	const user = req.body.username;
 	const text = req.body.text;
 	posts.push({"username":user,"text":text});
 	resp.send(true);
 });
 
-app.post('./createevent', function(req,resp){
+app.post('/createevent', function(req,resp){
 	const creator = req.body.creator;
 	const title = req.body.title;
 	const description = req.body.description;
@@ -114,11 +114,11 @@ app.post('./createevent', function(req,resp){
 	resp.send(true);
 });
 
-app.get('./events', function(req,resp){
+app.get('/events', function(req,resp){
 	resp.send(events);
 });
 
-app.post('./chats',function(req,resp){
+app.post('/chats',function(req,resp){
 	const user = req.body.username;
 	users.forEach(function(item){
 		if(item.username == user){
@@ -127,7 +127,7 @@ app.post('./chats',function(req,resp){
 	});
 });
 
-app.post('./send',function(req,resp){
+app.post('/send',function(req,resp){
 	const from = req.body.from;
 	const to = req.body.to;
 	const message = req.body.message;

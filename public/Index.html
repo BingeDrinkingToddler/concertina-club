@@ -46,7 +46,7 @@
 								var sur = $("#newsurname").val();
 								var pass = $("#newpassword").val();
 								if (newuser != "" && fore != "" && sur != "" && pass != "") {
-									$.post("./people", {username: newuser,forename: fore, surname: sur ,access_token:pass})
+									$.post("/people", {username: newuser,forename: fore, surname: sur ,access_token:pass})
 										.done(function(data){
 											if (data == true){
 												alert("User has been created");
@@ -84,7 +84,7 @@
 				<script>
 					function loadup(){
 						$("#users-active").empty();
-						$.get("./people",
+						$.get("/people",
 							function(data){
 								$.each(data, function(index,value){
 								$("#users-active").append('\
@@ -111,7 +111,7 @@
 						var usernamelogin = $("#usernamelogin").val();
 						var passwlogin = $("#passwordlogin").val();
 						if (usernamelogin != "" && passwlogin != ""){
-							$.post("./login", {"username":usernamelogin, "passw":passwlogin},
+							$.post("/login", {"username":usernamelogin, "passw":passwlogin},
 								function(data){
 								if (data == false){
 									alert("Login details were incorrect");
@@ -143,7 +143,7 @@
 					}
 					function loadposts(){
 						$("#posts").empty();
-						$.get("./posts",
+						$.get("/posts",
 						function(data){
 							$.each(data, function(index, value){
 								$("#posts").append('\
@@ -166,7 +166,7 @@
 						});
 					}
 					function signout(){
-						$.post("./signout",{"username":user},
+						$.post("/signout",{"username":user},
 							function(data){
 								loadup();
 								open = 0;
@@ -198,7 +198,7 @@
 					var open = 0;
 					function event(){
 						$("#events").empty();
-						$.get("./events",
+						$.get("/events",
 							function(data){
 								open = 1;
 								$("#events").append('\
@@ -247,7 +247,7 @@
 					function post(){
 						var text = $("#posttext").val();
 						if (text != "" && text.includes("<script>") == false){
-						$.post("./post",{"username":user,"text":text},
+						$.post("/post",{"username":user,"text":text},
 							function(data){
 								loadposts();
 							});
@@ -276,7 +276,7 @@
 						const description = $("#eventdescription").val();
 						const date = $("#eventdate").val();
 						if (title != "" && description != "" && date != ""){
-							$.post("./createevent", {"creator":user, "title":title, "description":description, "date": date},
+							$.post("/createevent", {"creator":user, "title":title, "description":description, "date": date},
 								function(data){
 									event();
 								});
@@ -298,12 +298,12 @@
 					function chat(){
 						open = 2;
 						var chats = []
-						$.post("./chats",{username:user},
+						$.post("/chats",{username:user},
 							function(data){
 								chats = data;
 						});
 						$("#events").empty();
-						$.get('./people',
+						$.get('/people',
 							function(data){
 								$("#events").append('\
 									<div class="panel panel-default textbackground">\
@@ -369,7 +369,7 @@
 											function send(){
 												var message = $("#message").val();
 												if (message != "" && message.includes("<script>") == false){
-													$.post('./send',{"from":user,"to":value.username,"message":message},
+													$.post('/send',{"from":user,"to":value.username,"message":message},
 														function(data){
 															$("#message").val("");
 															$("#users-chat").append('\
